@@ -1,3 +1,0 @@
-fastmcp<3
-cyclopts>=5.0.0a1
-pydantic>=2.0.0

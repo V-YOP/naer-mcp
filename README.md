@@ -25,18 +25,20 @@ naer-mcp/
 │   └── naer_mcp/
 │       ├── __init__.py
 │       ├── __main__.py      # 主入口点
-│       └── server.py        # MCP 服务器实现
+│       ├── server.py        # MCP 服务器根文件（使用mount挂载模块）
+│       └── example/         # 示例模块（MVC风格的Controller）
+│           └── __init__.py  # 示例工具、资源和提示
 ├── examples/
 │   └── client.py           # 示例客户端
 ├── config/
 │   └── example_config.yaml # 配置示例
 ├── tests/                  # 测试目录
 ├── docker/                 # Docker 相关文件
-├── pyproject.toml         # Python 项目配置
-├── requirements.txt       # 依赖列表
+├── pyproject.toml         # Python 项目配置（包含依赖）
 ├── Dockerfile            # Docker 构建文件
 ├── docker-compose.yml    # Docker Compose 配置
-└── README.md            # 本文档
+├── README.md            # 本文档
+└── FastMCP_Tutorial.md  # FastMCP 使用教程
 ```
 
 ## 快速开始
@@ -48,8 +50,8 @@ naer-mcp/
 git clone <repository-url>
 cd naer-mcp
 
-# 安装依赖
-pip install -r requirements.txt
+# 安装依赖（从pyproject.toml读取）
+pip install .
 
 # 运行服务器（stdio 模式）
 python -m naer_mcp
@@ -211,7 +213,7 @@ curl http://localhost:8000/health
 
 1. **导入错误**: 确保 `PYTHONPATH` 包含 `src/` 目录
 2. **端口冲突**: 检查端口 8000 是否被占用
-3. **依赖问题**: 使用 `pip install -r requirements.txt` 重新安装依赖
+3. **依赖问题**: 使用 `pip install .` 重新安装依赖
 4. **Docker 构建失败**: 清理 Docker 缓存 `docker system prune -a`
 
 ### 日志查看
