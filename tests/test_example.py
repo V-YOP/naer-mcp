@@ -1,11 +1,11 @@
 """Simple import test to verify the project structure."""
 
-def test_imports():
+def test_example():
     """Test that all modules can be imported."""
     try:
         import naer_mcp
         import naer_mcp
-        from naer_mcp.example.example import mcp, greet, add_numbers, reverse_string
+        from naer_mcp.example import mcp, greet, add_numbers, reverse_string
 
         print("✓ All imports successful")
         print(f"  - naer_mcp version: {naer_mcp.__version__}")
@@ -33,5 +33,5 @@ def test_imports():
         return False
 
 if __name__ == "__main__":
-    success = test_imports()
+    success = test_example()
     exit(0 if success else 1)
