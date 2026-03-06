@@ -123,73 +123,7 @@ docker-compose down
 
 ## 扩展和自定义
 
-### 添加新工具
-
-要添加新工具，只需在 `src/naer_mcp/server.py` 中添加函数并使用 `@mcp.tool` 装饰器：
-
-```python
-@mcp.tool(name="your_tool", description="Description of your tool")
-def your_tool(param1: str, param2: int) -> Any:
-    # 你的工具逻辑
-    return result
-```
-
-### 添加资源
-
-```python
-@mcp.resource("your://resource-uri")
-def your_resource() -> dict:
-    return {"key": "value"}
-```
-
-### 添加提示
-
-```python
-@mcp.prompt("your_prompt_name")
-def your_prompt(param: str = "default") -> str:
-    return f"Your prompt with {param}"
-```
-
-### 配置自定义
-
-1. 复制 `config/example_config.yaml` 为 `config/config.yaml`
-2. 根据需要修改配置
-3. 在代码中读取配置：
-
-```python
-import yaml
-
-with open("config/config.yaml", "r") as f:
-    config = yaml.safe_load(f)
-```
-
-## 与 MCP 客户端集成
-
-### Claude Desktop 配置
-
-在 Claude Desktop 的 MCP 配置中添加：
-
-```json
-{
-  "mcpServers": {
-    "naer-mcp": {
-      "command": "python",
-      "args": ["-m", "naer_mcp"],
-      "env": {
-        "PYTHONPATH": "/path/to/naer-mcp/src"
-      }
-    }
-  }
-}
-```
-
-### HTTP 端点
-
-当使用 HTTP 传输时，服务器提供以下端点：
-
-- `GET /` - 服务器状态
-- `GET /health` - 健康检查
-- `POST /tools/execute` - 执行工具
+参照`src/naer_mcp/server.py`和`src/naer_mcp/example/__init__.py`，以及`FastMCP_Tutorial.md`。
 
 ## 开发指南
 
@@ -218,9 +152,9 @@ mypy src/
 在 `tests/` 目录中添加测试文件：
 
 ```python
-# tests/test_server.py
+# tests/test_example.py
 def test_greet():
-    from naer_mcp.server import greet
+    from naer_mcp.example import greet
     assert greet("Alice") == "Hello, Alice!"
 ```
 

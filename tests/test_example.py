@@ -4,8 +4,8 @@ def test_imports():
     """Test that all modules can be imported."""
     try:
         import naer_mcp
-        import naer_mcp.server
-        from naer_mcp.server import mcp, greet, add_numbers, reverse_string
+        import naer_mcp
+        from naer_mcp.example.example import mcp, greet, add_numbers, reverse_string
 
         print("✓ All imports successful")
         print(f"  - naer_mcp version: {naer_mcp.__version__}")
