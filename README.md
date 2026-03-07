@@ -125,7 +125,7 @@ docker-compose down
 
 ## 扩展和自定义
 
-参照`src/naer_mcp/server.py`和`src/naer_mcp/example/__init__.py`，以及`FastMCP_Tutorial.md`。
+参照`src/naer_mcp/server.py`和`src/naer_mcp/example/__init__.py`，以及`FastMCP_Tutorial.md`。注意持久存储文件可以存到`Path(os.getcwd())/"data"`下
 
 ## 开发指南
 

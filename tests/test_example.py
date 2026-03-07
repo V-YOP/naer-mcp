@@ -1,37 +1,22 @@
 """Simple import test to verify the project structure."""
 
-def test_example():
+import pytest
+
+@pytest.mark.asyncio
+async def test_example():
     """Test that all modules can be imported."""
-    try:
-        import naer_mcp
-        import naer_mcp
-        from naer_mcp.example import mcp, greet, add_numbers, reverse_string
+    from naer_mcp.example import greet, add_numbers, reverse_string
 
-        print("✓ All imports successful")
-        print(f"  - naer_mcp version: {naer_mcp.__version__}")
-        print(f"  - Server name: {mcp.name}")
+    # Test tool functions
+    result = await greet.run({'name': 'Test'})
+    result = result.structured_content['result']
+    assert result == "你好, Test!", f"Expected 'Hello, Test!', got {result}"
 
-        # Test tool functions
-        result = greet("Test")
-        assert result == "Hello, Test!", f"Expected 'Hello, Test!', got {result}"
-        print("✓ greet() function works")
+    result = await add_numbers.run({'a': 2, 'b': 3})
+    result = result.structured_content['result']
+    assert result == 5.0, f"Expected 5.0, got {result}"
 
-        result = add_numbers(2, 3)
-        assert result == 5.0, f"Expected 5.0, got {result}"
-        print("✓ add_numbers() function works")
+    result = await reverse_string.run({'text': "hello"})
+    result = result.structured_content['result']
+    assert result == "olleh", f"Expected 'olleh', got {result}"
 
-        result = reverse_string("hello")
-        assert result == "olleh", f"Expected 'olleh', got {result}"
-        print("✓ reverse_string() function works")
-
-        return True
-
-    except Exception as e:
-        print(f"✗ Import test failed: {e}")
-        import traceback
-        traceback.print_exc()
-        return False
-
-if __name__ == "__main__":
-    success = test_example()
-    exit(0 if success else 1)

@@ -1,7 +1,5 @@
 """Main entry point for NAER MCP server."""
 
-import sys
-
 from .server import mcp
 
 if __name__ == "__main__":

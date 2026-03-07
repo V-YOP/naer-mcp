@@ -10,3 +10,6 @@ mcp = FastMCP("NAER MCP Server", version="0.1.0")
 # use mount to seperate tools like Controller in MVC
 from .example import mcp as example_mcp
 mcp.mount(example_mcp, prefix='example', as_proxy=False)
+
+from .memo import mcp as memo_mcp
+mcp.mount(memo_mcp, prefix='memo', as_proxy=False)
